@@ -42,6 +42,8 @@ public strictfp class RobotPlayer {
             // Try/catch blocks stop unhandled exceptions, which cause your robot to explode
             try {
 
+                int RoundNumber = rc.getRoundNum();
+                System.out.println(RoundNumber);
                 // Generate a random direction
                 Direction dir = randomDirection();
 
@@ -189,6 +191,8 @@ public strictfp class RobotPlayer {
      * @return a random Direction
      */
     static Direction randomDirection() {
+
+
         return new Direction((float)Math.random() * 2 * (float)Math.PI);
     }
 
