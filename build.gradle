@@ -60,6 +60,9 @@ dependencies {
     // The Battlecode engine.
     compile group: 'org.battlecode', name: 'battlecode', version: '2017.+'
 
+    // https://mvnrepository.com/artifact/org.apache.clerezza.ext/org.json.simple
+    compile group: 'org.apache.clerezza.ext', name: 'org.json.simple', version: '0.4'
+
     // The Battlecode client.
     client group: 'org.battlecode', name: clientName, version: '2017.+'
 
@@ -89,10 +92,10 @@ idea {
 
 // Default configuration for running matches.
 if (!project.hasProperty("teamA")) {
-    ext.teamA = "examplefuncsplayer"
+    ext.teamA = "donothing"
 }
 if (!project.hasProperty("teamB")) {
-    ext.teamB = "examplefuncsplayer"
+    ext.teamB = "donothing"
 }
 if (!project.hasProperty("maps")) {
     ext.maps = "shrine"
@@ -130,6 +133,8 @@ build.dependsOn('unpackClient')
 task run(type: JavaExec, dependsOn: 'build') {
     description 'Runs a match without starting the client.'
     group 'battlecode'
+    println 'PLAYER: ' +project.property('teamA')
+    println 'PLAYER: ' +project.property('teamB')
 
     main = 'battlecode.server.Main'
     classpath = sourceSets.main.runtimeClasspath
